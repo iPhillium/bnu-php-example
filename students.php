@@ -3,19 +3,19 @@ $servername = "localhost";
 $username = "bnubseen_db31";
 $password = "21424234$!";
 $dbname = "bnubseen_db31";
-// Create connection to the database
+// Create connection to the database using credentials
 $conn = mysqli_connect($servername,$username,$password,$dbname);
 // Check handling for the connection
 if ($conn->connect_error) {
 	die("Connection failed: " . $conn->connect_error);
 }
 
-//Handling for deleting
-//upon sumbiting the input DeleteForms it checks to see if it still exists
+//Handling for deletion of the students
+//upon sumbiting the button input DeleteForms, it checks to see the array from the checkbox has been initialised
 if(isset($_POST['selectedRows'])) {
 	// searches through array for any of the studentid numbers
 	foreach($_POST['selectedRows'] as $row) {
-		// deletes the id's that were in the assoc array and then escapes from deletion.
+		// deletes the id's that were in the assoc array and then escapes from deletion because we only need to access those rows and reduces the possibility of injection.
 		$conn->query("DELETE FROM student WHERE studentid = '" . mysqli_real_escape_string($conn, $row) . "'");
 	}
 }
@@ -45,7 +45,7 @@ include('templates/partials/nav.php');
 				<tbody>
 					<?php
 					if ($result->num_rows > 0) {
-	// output data of each row
+	// output the data of each row of the table in the database.
 						while($row = $result->fetch_assoc()) {
 							echo "<tr><td>". $row["studentid"]. 
 							"</td><td>". $row["firstname"]. 
@@ -55,6 +55,7 @@ include('templates/partials/nav.php');
 							"</td><td>". $row["county"].
 							"</td><td>". $row["country"]. 
 							"</td><td>". $row["postcode"].
+							// the checkbox field is added to each row and the name assigned is an array so when it take the student id it can handle multiple 
 							"</td><td><input type=\"checkbox\" name=\"selectedRows[]\" value=\"".$row["studentid"]."\"></td>".
 							"</td></tr>";
 						}
@@ -70,7 +71,7 @@ include('templates/partials/nav.php');
 	</div>
 </div>
 <?php
-// closes the connection if a connection wants to be created elsewhere
+// closes the connection to the database (good practice)
 $conn->close();
 ?>
 </body>
