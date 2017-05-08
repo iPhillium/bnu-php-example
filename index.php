@@ -8,12 +8,12 @@
 
    if (isset($_GET['return'])) {
       $msg = "";
-      if ($_GET['return'] == "fail") {$msg = "Login Failed. Please try again.";}
+      if ($_GET['return'] == "fail") {$msg = "<p class='bg-danger'>" . "Login Failed. Please try again." . "</p>";}
       $data['message'] = "<p>$msg</p>";
    }
 
    if (isset($_SESSION['id'])) {
-      $data['content'] = "<p>Welcome to your dashboard.";
+      $data['content'] = "<p class='bg-primary'>" . "Welcome to your dashboard." . "</p>";
       echo template("templates/partials/nav.php");
       echo template("templates/default.php", $data);
    } else {

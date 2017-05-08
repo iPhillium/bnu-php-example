@@ -25,7 +25,7 @@ if (isset($_SESSION['id'])) {
       $sql .= "where studentid = '" . $_SESSION['id'] . "';";
       $result = mysqli_query($conn,$sql);
 
-      $data['content'] = "<p>Your details have been updated</p>";
+      $data['content'] = "<p class='bg-primary'>Your details have been updated</p>";
 
    }
    else {
@@ -41,22 +41,23 @@ if (isset($_SESSION['id'])) {
       $data['content'] = <<<EOD
 
    <h2>My Details</h2>
-   <form name="frmdetails" action="" method="post">
-   First Name :
-   <input name="txtfirstname" type="text" value="{$row['firstname']}" /><br/>
-   Surname :
-   <input name="txtlastname" type="text"  value="{$row['lastname']}" /><br/>
-   Number and Street :
-   <input name="txthouse" type="text"  value="{$row['house']}" /><br/>
-   Town :
-   <input name="txttown" type="text"  value="{$row['town']}" /><br/>
-   County :
-   <input name="txtcounty" type="text"  value="{$row['county']}" /><br/>
-   Country :
-   <input name="txtcountry" type="text"  value="{$row['country']}" /><br/>
-   Postcode :
-   <input name="txtpostcode" type="text"  value="{$row['postcode']}" /><br/>
-   <input type="submit" value="Save" name="submit"/>
+   <form name="frmdetails" class="form-horizontal" action="" method="post">
+   <div class="form-group">
+   <label for="inputFirstName" class="col-sm-2 control-label">First Name:</label>
+   <input name="txtfirstname" type="text" class="form-control" value="{$row['firstname']}" /><br/>
+   <label for="inputLastName" class="col-sm-2 control-label">Last Name:</label>
+   <input name="txtlastname" type="text" class="form-control" value="{$row['lastname']}" /><br/>
+   <label for="inputNumberStreet" class="col-sm-2 control-label">Number and Street:</label>
+   <input name="txthouse" type="text" class="form-control" value="{$row['house']}" /><br/>
+   <label for="inputTown" class="col-sm-2 control-label">Town:</label>
+   <input name="txttown" type="text" class="form-control" value="{$row['town']}" /><br/>
+   <label for="inputCounty" class="col-sm-2 control-label">County:</label>
+   <input name="txtcounty" type="text" class="form-control" value="{$row['county']}" /><br/>
+   <label for="inputCountry" class="col-sm-2 control-label">Country:</label>
+   <input name="txtcountry" type="text" class="form-control" value="{$row['country']}" /><br/>
+   <label for="inputPostcode" class="col-sm-2 control-label">Postcode:</label>
+   <input name="txtpostcode" type="text" class="form-control" value="{$row['postcode']}" /><br/>
+   <input type="submit" value="Save" name="submit" class="btn btn-default"/>
    </form>
 
 EOD;
