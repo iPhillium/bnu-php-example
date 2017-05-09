@@ -6,6 +6,10 @@
 
    echo template("templates/partials/header.php");
 
+   //Start of div container with title
+   echo "<div class='container'>";
+   echo "<h2>BNU Student Portal</h2>";
+
    if (isset($_GET['return'])) {
       $msg = "";
       if ($_GET['return'] == "fail") {$msg = "<p class='bg-danger'>" . "Login Failed. Please try again." . "</p>";}
@@ -19,7 +23,8 @@
    } else {
       echo template("templates/login.php", $data);
    }
-
+   //end of div container
+   echo "</div>";
    echo template("templates/partials/footer.php");
 
 ?>

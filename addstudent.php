@@ -50,7 +50,7 @@ if (isset($_POST['SumbitStudent'])) {
 			<div class="form-group">
 				<label for="Create a password here" class="col-sm-2 control-label" >* Password </label>
 				<div class="col-sm-10"> 
-					<input name="txtpassword" type="text" class="form-control" placeholder="Password" required=""/><br/>
+					<input name="txtpassword" type="password" class="form-control" placeholder="Password" required=""/><br/>
 				</div>
 			</div>
 			<div class="form-group">
